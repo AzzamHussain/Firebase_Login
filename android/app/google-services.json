@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "123173143377",
+    "project_id": "tryfire-167e0",
+    "storage_bucket": "tryfire-167e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123173143377:android:a5808e8579d4e74c148970",
+        "android_client_info": {
+          "package_name": "com.example.hustling"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDV4-6DDhhV5Mjh2edFmJ2c54kZjnfESwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
