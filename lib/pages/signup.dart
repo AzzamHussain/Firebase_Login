@@ -1,6 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatelessWidget {
+  final _auth = FirebaseAuth.instance; // FirebaseAuth instance
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  void _signup() async {
+    try {
+      await _auth.createUserWithEmailAndPassword(
+          email: _emailController.text, password: _passwordController.text);
+      // Navigate to the next screen if signup is successful
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => NextScreen()));
+    } catch (e) {
+      print(e); // Handle signup error
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,6 +45,7 @@ class SignupScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     TextField(
+                      controller: _nameController,
                       decoration: InputDecoration(
                           fillColor: Colors.white,
                           filled: true,
@@ -39,6 +57,7 @@ class SignupScreen extends StatelessWidget {
                       height: 40,
                     ),
                     TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                           fillColor: Colors.white,
                           filled: true,
@@ -50,6 +69,7 @@ class SignupScreen extends StatelessWidget {
                       height: 40,
                     ),
                     TextField(
+                      controller: _passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -71,14 +91,15 @@ class SignupScreen extends StatelessWidget {
                               fontSize: 30,
                               fontWeight: FontWeight.w500),
                         ),
-                        // CircleAvatar(
-                        //   radius: 35,
-                        //   backgroundColor: Color(0xff4c505b),
-                        //   child: IconButton(
-                        //     onPressed: () {},
-                        //     icon: Icon(Icons.keyboard_arrow_right),
-                        //   ),
-                        // ),
+                        CircleAvatar(
+                          radius: 35,
+                          backgroundColor: Color(0xff4c505b),
+                          child: IconButton(
+                            onPressed: _signup, // Signup function
+
+                            icon: Icon(Icons.keyboard_arrow_right),
+                          ),
+                        ),
                       ],
                       // ),
                       // SizedBox(

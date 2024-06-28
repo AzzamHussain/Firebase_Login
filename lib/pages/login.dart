@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'signup.dart'; // Import the signup screen
 
@@ -9,6 +10,19 @@ class Mylogin extends StatefulWidget {
 }
 
 class _MyloginState extends State<Mylogin> {
+  final _auth = FirebaseAuth.instance;
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  void _login() async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+          email: _emailController.text, password: _passwordController.text);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,6 +50,7 @@ class _MyloginState extends State<Mylogin> {
                 child: Column(
                   children: [
                     TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                           fillColor: Colors.white,
                           filled: true,
@@ -47,6 +62,7 @@ class _MyloginState extends State<Mylogin> {
                       height: 40,
                     ),
                     TextField(
+                      controller: _passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                           fillColor: Colors.white,
